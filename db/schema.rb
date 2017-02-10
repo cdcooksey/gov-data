@@ -10,10 +10,56 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170210211713) do
+ActiveRecord::Schema.define(version: 20170211001806) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
+
+  create_table "consumer_complaint_companies", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "consumer_complaint_issues", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "consumer_complaint_products", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "consumer_complaint_subissues", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "consumer_complaint_subproducts", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "consumer_complaints", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.integer  "complaint_id"
+    t.date     "date_received"
+    t.date     "date_sent_to_company"
+    t.boolean  "timely_response"
+    t.boolean  "consumer_disputed"
+    t.string   "submitted_via"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.uuid     "consumer_complaint_company_id"
+    t.uuid     "consumer_complaint_product_id"
+    t.uuid     "consumer_complaint_subproduct_id"
+    t.uuid     "consumer_complaint_issue_id"
+    t.uuid     "consumer_complaint_subissue_id"
+  end
 
 end
