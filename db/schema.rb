@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170211001806) do
+ActiveRecord::Schema.define(version: 20170211105316) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,8 @@ ActiveRecord::Schema.define(version: 20170211001806) do
     t.uuid     "consumer_complaint_subproduct_id"
     t.uuid     "consumer_complaint_issue_id"
     t.uuid     "consumer_complaint_subissue_id"
+    t.text     "consumer_complaint_narrative"
+    t.text     "company_public_response"
   end
 
 end
