@@ -1,3 +1,6 @@
+- name: create_db
+  service: govdata
+  command: rails db:create RAILS_ENV=test
 - name: ruby
   service: govdata
   command: bundle exec rspec
