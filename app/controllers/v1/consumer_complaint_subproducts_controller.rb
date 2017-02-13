@@ -5,7 +5,7 @@ class V1::ConsumerComplaintSubproductsController < V1::ApplicationController
   end
 
   def show
-    @consumer_complaint_subproduct = ConsumerComplaintSubproduct.find_by(consumer_complaint_company_params)
+    @consumer_complaint_subproduct = ConsumerComplaintSubproduct.find_by(consumer_complaint_subproduct_params)
     render json: @consumer_complaint_subproduct
   end
 
