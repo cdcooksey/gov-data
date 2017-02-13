@@ -6,3 +6,5 @@ govdata:
     - postgres
 postgres:
    image: postgres:9.6.1
+environment:
+  RAILS_ENV: test
