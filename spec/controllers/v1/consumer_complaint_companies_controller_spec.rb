@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ConsumerComplaintCompaniesController, type: :controller do
+RSpec.describe V1::ConsumerComplaintCompaniesController, type: :controller do
 
   describe "GET #index" do
     it "returns http success" do
