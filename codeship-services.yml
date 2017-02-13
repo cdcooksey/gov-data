@@ -1,0 +1,8 @@
+govdata:
+  build:
+    image: myapp
+    dockerfile_path: Dockerfile
+  links:
+    - postgres
+postgres:
+   image: postgres:9.6.1
