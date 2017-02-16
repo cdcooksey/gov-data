@@ -1,0 +1,10 @@
+govdata:
+  build:
+    image: myapp
+    dockerfile_path: Dockerfile
+  links:
+    - postgres
+  environment:
+    RAILS_ENV: test
+postgres:
+   image: postgres:9.6.1

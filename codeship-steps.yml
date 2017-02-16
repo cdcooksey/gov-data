@@ -1,0 +1,15 @@
+- name: install_bundle
+  service: govdata
+  command: gem install bundle
+- name: bundle_install
+  service: govdata
+  command: bundle install
+- name: create_db
+  service: govdata
+  command: rake db:create RAILS_ENV=test
+- name: migrate_db
+  service: govdata
+  command: rake db:migrate RAILS_ENV=test
+- name: ruby
+  service: govdata
+  command: rspec
