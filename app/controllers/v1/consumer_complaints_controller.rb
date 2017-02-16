@@ -1,7 +1,7 @@
 class V1::ConsumerComplaintsController < V1::ApplicationController
 
   def index
-    @consumer_complaints = ConsumerComplaint.all.limit(200)
+    @consumer_complaints = ConsumerComplaint.all.limit(100)
     render json: @consumer_complaints
   end
 
