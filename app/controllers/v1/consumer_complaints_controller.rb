@@ -6,7 +6,9 @@ class V1::ConsumerComplaintsController < V1::ApplicationController
   end
 
   def show
-    @consumer_complaint = ConsumerComplaint.find_by(consumer_complaint_params)
+    @consumer_complaint = ConsumerComplaint.eager_load(:consumer_complaint_companies,
+                                                       :consumer_complaint_issues)
+                                           .find_by(consumer_complaint_params)
     render json: @consumer_complaint
   end
 
