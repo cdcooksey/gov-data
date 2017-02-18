@@ -9,6 +9,11 @@ class V1::ConsumerComplaintCompaniesController < V1::ApplicationController
     render json: @consumer_complaint_company
   end
 
+  def consumer_complaints
+    @consumer_complaints = ConsumerComplaint.where(consumer_complaint_company_id: consumer_complaint_company_params[:id])
+    render json: @consumer_complaints
+  end
+
   private
 
   def consumer_complaint_company_params
