@@ -15,7 +15,8 @@ class V1::ConsumerComplaintsController < V1::ApplicationController
   private
 
   def consumer_complaint_params
-    params.permit(:consumer_complaint_company_id)
+    params.permit(:consumer_complaint_company_id,
+                  :consumer_complaint_product_id)
   end
 
   def page_params
