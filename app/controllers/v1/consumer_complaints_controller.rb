@@ -1,7 +1,7 @@
 class V1::ConsumerComplaintsController < V1::ApplicationController
 
   def index
-    @consumer_complaints = ConsumerComplaint.all.limit(100)
+    @consumer_complaints = ConsumerComplaint.where(consumer_complaint_params).page(page_params[:page]).per_page(25)
     render json: @consumer_complaints
   end
 
@@ -15,7 +15,11 @@ class V1::ConsumerComplaintsController < V1::ApplicationController
   private
 
   def consumer_complaint_params
-    params.permit(:id)
+    params.permit(:consumer_complaint_company_id)
+  end
+
+  def page_params
+    params.permit(:page)
   end
 
 end
