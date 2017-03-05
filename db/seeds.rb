@@ -23,13 +23,14 @@ CSV.foreach("#{Rails.root}/lib/seeds/consumer_complaints.csv", :headers => true)
   cc.consumer_complaint_subproduct = ConsumerComplaintSubproduct.find_or_create_by(name: row['Sub-product'])
   cc.consumer_complaint_issue = ConsumerComplaintIssue.find_or_create_by(name: row['Issue'])
   cc.consumer_complaint_subissue = ConsumerComplaintSubissue.find_or_create_by(name: row['Sub-issue'])
+  cc.consumer_complaint_zip_code = ConsumerComplaintZipCode.find_or_create_by(name: row['ZIP code'])
 
-  cc.consumer_disputed = if row['Consumer disputed?'] === 'Yes'
+  cc.consumer_disputed = if row['Consumer disputed?'] === 'yes'.downcase
                            true
                          else
                            false
                          end
-  cc.timely_response = if row['Timely response?'] === 'Yes'
+  cc.timely_response = if row['Timely response?'] === 'yes'.downcase
                          true
                        else
                          false
