@@ -6,3 +6,4 @@ ADD Gemfile /myapp/Gemfile
 ADD Gemfile.lock /myapp/Gemfile.lock
 RUN bundle install
 ADD . /myapp
+ADD ./config/application.rb /myapp/config/application.rb
