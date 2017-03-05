@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170211105316) do
+ActiveRecord::Schema.define(version: 20170305093552) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,12 @@ ActiveRecord::Schema.define(version: 20170211105316) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "consumer_complaint_zip_codes", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "consumer_complaints", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.integer  "complaint_id"
     t.date     "date_received"
@@ -62,6 +68,7 @@ ActiveRecord::Schema.define(version: 20170211105316) do
     t.uuid     "consumer_complaint_subissue_id"
     t.text     "consumer_complaint_narrative"
     t.text     "company_public_response"
+    t.uuid     "consumer_complaint_zip_code_id"
   end
 
 end
