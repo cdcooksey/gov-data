@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :consumer_complaint_subproducts, path: 'consumer-complaint-subproducts', only: [:index, :show], defaults: { format: :json }
     resources :consumer_complaint_issues, path: 'consumer-complaint-issues', only: [:index, :show], defaults: { format: :json }
     resources :consumer_complaint_subissues, path: 'consumer-complaint-subissues', only: [:index, :show], defaults: { format: :json }
+    resources :consumer_complaint_zip_codes, path: 'consumer-complaint-zip-codes', only: [:index, :show], defaults: { format: :json }
   end
 
 end
