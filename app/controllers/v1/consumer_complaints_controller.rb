@@ -19,7 +19,8 @@ class V1::ConsumerComplaintsController < V1::ApplicationController
                   :consumer_complaint_product_id,
                   :consumer_complaint_subproduct_id,
                   :consumer_complaint_issue_id,
-                  :consumer_complaint_subissue_id )
+                  :consumer_complaint_subissue_id,
+                  :consumer_complaint_zip_code_id)
   end
 
   def page_params
