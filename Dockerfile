@@ -4,6 +4,6 @@ RUN mkdir /myapp
 WORKDIR /myapp
 ADD Gemfile /myapp/Gemfile
 ADD Gemfile.lock /myapp/Gemfile.lock
-ADD /config/application.rb /myapp/config/application.rb
+ADD application.rb /myapp/config/application.rb
 RUN bundle install
 ADD . /myapp
