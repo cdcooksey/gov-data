@@ -3,9 +3,9 @@ development: &default
   encoding: unicode
   database: myapp_development
   pool: 5
-  username: postgres
-  password:
-  host: db
+  username: charlie
+  # password:
+  # host: db
 
 test:
   <<: *default
