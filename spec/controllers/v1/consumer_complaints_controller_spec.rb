@@ -11,6 +11,8 @@ RSpec.describe V1::ConsumerComplaintsController, type: :controller do
       action
     end
 
+    let(:action) { get :index }
+
     let(:consumer_complaints) { FactoryBot.create_list(:consumer_complaint, 100) }
     let(:expected_payload) do
       JSON.parse(ConsumerComplaintSerializer.new(expected_consumer_complaints).serialized_json)
@@ -19,6 +21,14 @@ RSpec.describe V1::ConsumerComplaintsController, type: :controller do
     context 'without page param' do
       let(:action) { get :index }
       let(:expected_consumer_complaints) { consumer_complaints.first(50) }
+
+      it { expect(response).to have_http_status :ok }
+      it { is_expected.to eq(expected_payload) }
+    end
+
+    context 'when no ConsumerComplaints exist' do
+      let(:consumer_complaints) { [] }
+      let(:expected_payload) { { data: [] }.as_json }
 
       it { expect(response).to have_http_status :ok }
       it { is_expected.to eq(expected_payload) }
