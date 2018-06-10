@@ -37,6 +37,13 @@ RSpec.describe ConsumerComplaintSerializer do
               id: model.consumer_complaint_product.id,
               type: :consumer_complaint_product
             }
+          },
+
+          consumer_complaint_subproduct: {
+            data: {
+              id: model.consumer_complaint_subproduct.id,
+              type: :consumer_complaint_subproduct
+            }
           }
 
         }

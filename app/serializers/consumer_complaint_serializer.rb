@@ -10,4 +10,5 @@ class ConsumerComplaintSerializer
 
   belongs_to :consumer_complaint_company
   belongs_to :consumer_complaint_product
+  belongs_to :consumer_complaint_subproduct
 end
