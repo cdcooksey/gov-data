@@ -19,7 +19,6 @@ RSpec.describe V1::ConsumerComplaintsController, type: :controller do
     end
 
     context 'without page param' do
-      let(:action) { get :index }
       let(:expected_consumer_complaints) { consumer_complaints.first(50) }
 
       it { expect(response).to have_http_status :ok }
