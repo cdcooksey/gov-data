@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :consumer_complaint_zip_code do
-    id ""
-    name "MyString"
+    name { Faker::Lorem.word }
   end
 end
