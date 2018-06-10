@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :consumer_complaint do
     complaint_id 1
     date_received "2017-02-10"

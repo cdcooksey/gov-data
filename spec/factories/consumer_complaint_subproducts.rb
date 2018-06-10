@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :consumer_complaint_subproduct do
     name "MyString"
   end
