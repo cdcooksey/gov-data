@@ -15,7 +15,8 @@
 
 # Ignore Byebug command history file.
 .byebug_history
-.coverage
+coverage
+*.sqlite3
 
 # RubyMine
 .idea
