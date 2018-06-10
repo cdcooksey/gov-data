@@ -51,6 +51,20 @@ RSpec.describe ConsumerComplaintSerializer do
               id: model.consumer_complaint_issue.id,
               type: :consumer_complaint_issue
             }
+          },
+
+          consumer_complaint_subissue: {
+            data: {
+              id: model.consumer_complaint_subissue.id,
+              type: :consumer_complaint_subissue
+            }
+          },
+
+          consumer_complaint_zip_code: {
+            data: {
+              id: model.consumer_complaint_zip_code.id,
+              type: :consumer_complaint_zip_code
+            }
           }
 
         }
