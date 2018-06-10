@@ -10,8 +10,12 @@ RSpec.describe V1::ConsumerComplaintProductsController, type: :controller do
   end
 
   describe "GET #show" do
+    let(:product)    { FactoryBot.create(:consumer_complaint_product) }
+    let(:product_id) { product.id }
+
+    before { get :show, params: { id: product_id } }
+
     it "returns http success" do
-      get :show
       expect(response).to have_http_status(:ok)
     end
   end
