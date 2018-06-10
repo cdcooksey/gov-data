@@ -4,8 +4,8 @@ RSpec.describe V1::ConsumerComplaintCompaniesController, type: :controller do
 
   describe "GET #index" do
     it "returns http success" do
-      get v1_consumer_complaint_companies_path, format: :json
-      expect(response).to have_http_status(:success)
+      get :index
+      expect(response).to have_http_status(:ok)
     end
   end
 
