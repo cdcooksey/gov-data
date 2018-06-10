@@ -3,5 +3,6 @@ module V1
 
     include FastJsonApiResponse
     include ExceptionHandler
+    include Paginatable
   end
 end
