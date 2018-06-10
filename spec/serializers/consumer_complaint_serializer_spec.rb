@@ -22,13 +22,23 @@ RSpec.describe ConsumerComplaintSerializer do
           consumer_disputed: model.consumer_disputed,
           submitted_via: model.submitted_via
         },
+
         relationships: {
+
           consumer_complaint_company: {
             data: {
               id: model.consumer_complaint_company.id,
               type: :consumer_complaint_company
             }
+          },
+
+          consumer_complaint_product: {
+            data: {
+              id: model.consumer_complaint_product.id,
+              type: :consumer_complaint_product
+            }
           }
+
         }
       }
     }

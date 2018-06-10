@@ -7,5 +7,7 @@ class ConsumerComplaintSerializer
              :timely_response,
              :consumer_disputed,
              :submitted_via
+
   belongs_to :consumer_complaint_company
+  belongs_to :consumer_complaint_product
 end
