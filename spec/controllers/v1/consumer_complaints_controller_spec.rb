@@ -25,6 +25,16 @@ RSpec.describe V1::ConsumerComplaintsController, type: :controller do
       it { is_expected.to eq(expected_payload) }
     end
 
+    context 'with page param' do
+      let(:page) { 1 }
+      let(:action) { get :index, params: { page: page } }
+      # ignores first st of 50 items, gets the second set of 50 items
+      let(:expected_consumer_complaints) { consumer_complaints.drop(50).first(50) }
+
+      it { expect(response).to have_http_status :ok }
+      it { is_expected.to eq(expected_payload) }
+    end
+
     context 'when no ConsumerComplaints exist' do
       let(:consumer_complaints) { [] }
       let(:expected_payload) { { data: [] }.as_json }
