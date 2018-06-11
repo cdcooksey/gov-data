@@ -2,8 +2,6 @@ Rails.application.routes.draw do
 
   constraints format: :json do
 
-    root 'test#index'
-
     # Always version the API
     namespace :v1 do
       resources :consumer_complaints, path: 'consumer-complaints', only: [:index], defaults: { format: :json }
