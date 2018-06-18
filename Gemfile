@@ -6,6 +6,7 @@ source 'https://rubygems.org'
 gem 'rails', '~> 5.2.0'
 gem 'pg'
 gem 'fast_jsonapi'
+gem 'rack-cors'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
