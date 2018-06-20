@@ -13,7 +13,10 @@ class V1::ConsumerComplaintCompaniesController < V1::ApplicationController
   private
 
   def paginated_complaints
-    ConsumerComplaint.offset(offset).limit(PAGE_LIMIT)
+    ConsumerComplaint
+      .where(consumer_complaint_company_id: consumer_complaint_company_params[:id])
+      .offset(offset)
+      .limit(PAGE_LIMIT)
   end
 
   def company
@@ -21,5 +24,6 @@ class V1::ConsumerComplaintCompaniesController < V1::ApplicationController
   end
 
   def consumer_complaint_company_params
+    params.permit(:id)
   end
 end
