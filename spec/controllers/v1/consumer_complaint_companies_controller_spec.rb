@@ -46,21 +46,24 @@ RSpec.describe V1::ConsumerComplaintCompaniesController, type: :controller do
   end
 
 
-
-
-
   describe "GET #show" do
+    before do
+      expected_payload
+      action
+    end
+
     let(:company)    { FactoryBot.create(:consumer_complaint_company) }
     let(:company_id) { company.id }
 
-
-    before { get :show, params: { id: company_id } }
-    
-    let(:consumer_complaints) { FactoryBot.create_list(:consumer_complaint, 100, consumer_complaint_company: company) }
+    let(:consumer_complaints) do 
+      FactoryBot.create_list(:consumer_complaint, 1, consumer_complaint_company: company)
+    end
 
     let(:expected_payload) do
       JSON.parse(ConsumerComplaintSerializer.new(expected_consumer_complaints).serialized_json)
     end
+
+    let(:action) { get :show, params: { id: company_id } }
 
     context 'without page param' do
       let(:expected_consumer_complaints) { consumer_complaints.first(50) }
