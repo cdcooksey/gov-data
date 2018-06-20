@@ -13,7 +13,7 @@ RSpec.describe V1::ConsumerComplaintsController, type: :controller do
 
     let(:action) { get :index }
 
-    let(:consumer_complaints) { FactoryBot.create_list(:consumer_complaint, 100) }
+    let(:consumer_complaints) { FactoryBot.create_list(:consumer_complaint, 103) }
     let(:expected_payload) do
       JSON.parse(ConsumerComplaintSerializer.new(expected_consumer_complaints).serialized_json)
     end
