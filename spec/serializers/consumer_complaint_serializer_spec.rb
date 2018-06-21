@@ -25,7 +25,8 @@ RSpec.describe ConsumerComplaintSerializer do
           product: model.consumer_complaint_product.name,
           subproduct: model.consumer_complaint_subproduct.name,
           issue: model.consumer_complaint_issue.name,
-          subissue: model.consumer_complaint_subissue.name
+          subissue: model.consumer_complaint_subissue.name,
+          zip_code: model.consumer_complaint_zip_code.name
         },
 
         relationships: {

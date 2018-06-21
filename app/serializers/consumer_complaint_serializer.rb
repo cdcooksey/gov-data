@@ -28,6 +28,10 @@ class ConsumerComplaintSerializer
     obj.consumer_complaint_subissue.name
   end
 
+  attribute :zip_code do |obj|
+    obj.consumer_complaint_zip_code.name
+  end
+
   belongs_to :consumer_complaint_company
   belongs_to :consumer_complaint_product
   belongs_to :consumer_complaint_subproduct
