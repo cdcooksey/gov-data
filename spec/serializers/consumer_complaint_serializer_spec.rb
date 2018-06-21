@@ -23,7 +23,8 @@ RSpec.describe ConsumerComplaintSerializer do
           submitted_via: model.submitted_via,
           company: model.consumer_complaint_company.name,
           product: model.consumer_complaint_product.name,
-          subproduct: model.consumer_complaint_subproduct.name
+          subproduct: model.consumer_complaint_subproduct.name,
+          issue: model.consumer_complaint_issue.name
         },
 
         relationships: {
