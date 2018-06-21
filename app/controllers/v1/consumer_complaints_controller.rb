@@ -8,7 +8,15 @@ class V1::ConsumerComplaintsController < V1::ApplicationController
   private
 
   def paginated_complaints
-    ConsumerComplaint.offset(offset).limit(PAGE_LIMIT)
+    ConsumerComplaint
+      .includes(:consumer_complaint_company,
+                :consumer_complaint_product,
+                :consumer_complaint_subproduct,
+                :consumer_complaint_issue,
+                :consumer_complaint_subissue,
+                :consumer_complaint_zip_code)
+      .offset(offset)
+      .limit(PAGE_LIMIT)
   end
 
 end
