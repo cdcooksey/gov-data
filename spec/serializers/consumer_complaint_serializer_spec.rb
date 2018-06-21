@@ -21,7 +21,8 @@ RSpec.describe ConsumerComplaintSerializer do
           timely_response: model.timely_response,
           consumer_disputed: model.consumer_disputed,
           submitted_via: model.submitted_via,
-          company: model.consumer_complaint_company.name
+          company: model.consumer_complaint_company.name,
+          product: model.consumer_complaint_product.name
         },
 
         relationships: {
