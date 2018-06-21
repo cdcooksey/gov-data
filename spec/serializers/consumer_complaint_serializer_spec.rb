@@ -20,7 +20,8 @@ RSpec.describe ConsumerComplaintSerializer do
           date_sent_to_company: model.date_sent_to_company,
           timely_response: model.timely_response,
           consumer_disputed: model.consumer_disputed,
-          submitted_via: model.submitted_via
+          submitted_via: model.submitted_via,
+          company: model.consumer_complaint_company.name
         },
 
         relationships: {

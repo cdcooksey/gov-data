@@ -8,6 +8,10 @@ class ConsumerComplaintSerializer
              :consumer_disputed,
              :submitted_via
 
+  attribute :company do |obj|
+    obj.consumer_complaint_company.name
+  end
+
   belongs_to :consumer_complaint_company
   belongs_to :consumer_complaint_product
   belongs_to :consumer_complaint_subproduct
