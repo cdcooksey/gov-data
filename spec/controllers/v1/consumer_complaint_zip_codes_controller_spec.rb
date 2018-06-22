@@ -7,7 +7,7 @@ RSpec.describe V1::ConsumerComplaintZipCodesController, type: :controller do
 
   describe "GET #index" do
     before do
-      expected_payload
+      zip_codes
       action
     end
 
@@ -19,7 +19,7 @@ RSpec.describe V1::ConsumerComplaintZipCodesController, type: :controller do
     end
 
     context 'without page param' do
-      let(:expected_companies) { zip_codes.first(50) }
+      let(:expected_zip_codes) { zip_codes.first(50) }
 
       it { expect(response).to have_http_status :ok }
       it { is_expected.to eq(expected_payload) }
@@ -36,7 +36,7 @@ RSpec.describe V1::ConsumerComplaintZipCodesController, type: :controller do
     end
 
     context 'when no zip_codes exist' do
-      let(:companies) { [] }
+      let(:zip_codes) { [] }
       let(:expected_payload) { { data: [] }.as_json }
 
       it { expect(response).to have_http_status :ok }
