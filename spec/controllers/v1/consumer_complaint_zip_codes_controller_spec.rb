@@ -1,25 +1,25 @@
 require 'rails_helper'
 
-RSpec.describe V1::ConsumerComplaintCompaniesController, type: :controller do
+RSpec.describe V1::ConsumerComplaintZipCodesController, type: :controller do
 
   let(:actual) { JSON.parse(response.body) }
   subject { actual }
 
   describe "GET #index" do
     before do
-      companies
+      zip_codes
       action
     end
 
     let(:action) { get :index }
-    let(:companies) { FactoryBot.create_list(:consumer_complaint_company, 103) }
+    let(:zip_codes) { FactoryBot.create_list(:consumer_complaint_zip_code, 103) }
 
     let(:expected_payload) do
-      JSON.parse(ConsumerComplaintCompanySerializer.new(expected_companies).serialized_json)
+      JSON.parse(ConsumerComplaintZipCodeSerializer.new(expected_zip_codes).serialized_json)
     end
 
     context 'without page param' do
-      let(:expected_companies) { companies.first(50) }
+      let(:expected_zip_codes) { zip_codes.first(50) }
 
       it { expect(response).to have_http_status :ok }
       it { is_expected.to eq(expected_payload) }
@@ -29,20 +29,20 @@ RSpec.describe V1::ConsumerComplaintCompaniesController, type: :controller do
       let(:page) { 1 }
       let(:action) { get :index, params: { page: page } }
 
-      let(:expected_companies) { companies.drop(50).first(50) }
+      let(:expected_zip_codes) { zip_codes.drop(50).first(50) }
 
       it { expect(response).to have_http_status :ok }
       it { is_expected.to eq(expected_payload) }
     end
 
-    context 'when no companies exist' do
-      let(:companies) { [] }
+    context 'when no zip_codes exist' do
+      let(:zip_codes) { [] }
       let(:expected_payload) { { data: [] }.as_json }
 
       it { expect(response).to have_http_status :ok }
       it { is_expected.to eq(expected_payload) }
     end
- 
+
   end
 
 
@@ -52,18 +52,18 @@ RSpec.describe V1::ConsumerComplaintCompaniesController, type: :controller do
       action
     end
 
-    let(:company)    { FactoryBot.create(:consumer_complaint_company) }
-    let(:company_id) { company.id }
+    let(:zip_code)    { FactoryBot.create(:consumer_complaint_zip_code) }
+    let(:zip_code_id) { zip_code.id }
 
     let(:consumer_complaints) do 
-      FactoryBot.create_list(:consumer_complaint, 1, consumer_complaint_company: company)
+      FactoryBot.create_list(:consumer_complaint, 1, consumer_complaint_zip_code: zip_code)
     end
 
     let(:expected_payload) do
       JSON.parse(ConsumerComplaintSerializer.new(expected_consumer_complaints).serialized_json)
     end
 
-    let(:action) { get :show, params: { id: company_id } }
+    let(:action) { get :show, params: { id: zip_code_id} }
 
     context 'without page param' do
       let(:expected_consumer_complaints) { consumer_complaints.first(50) }
@@ -74,7 +74,7 @@ RSpec.describe V1::ConsumerComplaintCompaniesController, type: :controller do
 
     context 'with page param' do
       let(:page) { 1 }
-      let(:action) { get :show, params: { id: company_id, page: page } }
+      let(:action) { get :show, params: { id: zip_code_id, page: page } }
       let(:expected_consumer_complaints) { consumer_complaints.drop(50).first(50) }
 
       it { expect(response).to have_http_status :ok }
