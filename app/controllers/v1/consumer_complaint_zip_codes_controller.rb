@@ -27,10 +27,16 @@ class V1::ConsumerComplaintZipCodesController < V1::ApplicationController
   end
 
   def zip_codes
-    ConsumerComplaintZipCode.offset(offset).limit(PAGE_LIMIT)
+    if consumer_complaint_zip_code_params[:zip_code]
+      ConsumerComplaintZipCode .where('name LIKE ?', "#{consumer_complaint_zip_code_params[:zip_code]}%")
+        .offset(offset)
+        .limit(PAGE_LIMIT)
+    else
+      ConsumerComplaintZipCode.offset(offset).limit(PAGE_LIMIT)
+    end
   end
 
   def consumer_complaint_zip_code_params
-    params.permit(:id)
+    params.permit(:id, :zip_code)
   end
 end
