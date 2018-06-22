@@ -43,6 +43,68 @@ RSpec.describe V1::ConsumerComplaintZipCodesController, type: :controller do
       it { is_expected.to eq(expected_payload) }
     end
 
+    describe 'searching by zip_code' do
+      let(:search_term) { 0 }
+      let(:action) { get :index, params: { zip_code: search_term } }
+
+      describe 'not getting results' do
+        let(:zip_codes) { [] }
+        let(:expected_payload) { { data: [] }.as_json }
+
+        it { expect(response).to have_http_status :ok }
+        it { is_expected.to eq(expected_payload) }
+      end
+
+      describe 'getting results' do
+        let(:zip_code_range) { rand(11111..11119) }
+        let(:zip_codes) { FactoryBot.create_list(:consumer_complaint_zip_code, 4, name: zip_code_range) }
+        let(:expected_zip_codes) { zip_codes }
+
+        context 'when searching by one character' do
+          let(:search_term) { zip_code_range.to_s.first(1) }
+          it { expect(response).to have_http_status :ok }
+          it { is_expected.to eq(expected_payload) }
+        end
+
+        context 'when searching by two characters' do
+          let(:search_term) { zip_code_range.to_s.first(1) }
+          it { expect(response).to have_http_status :ok }
+          it { is_expected.to eq(expected_payload) }
+        end
+
+        context 'when searching by three characters' do
+          let(:search_term) { zip_code_range.to_s.first(3) }
+          it { expect(response).to have_http_status :ok }
+          it { is_expected.to eq(expected_payload) }
+        end
+
+        context 'when searching by four characters' do
+          let(:search_term) { zip_code_range.to_s.first(4) }
+          it { expect(response).to have_http_status :ok }
+          it { is_expected.to eq(expected_payload) }
+        end
+
+        context 'when searching by five characters' do
+          let(:search_term) { zip_code_range.to_s.first(5) }
+          it { expect(response).to have_http_status :ok }
+          it { is_expected.to eq(expected_payload) }
+        end
+
+        context 'when searching by six characters' do
+          let(:search_term) { zip_code_range.to_s.first(6) }
+          it { expect(response).to have_http_status :ok }
+          it { is_expected.to eq(expected_payload) }
+        end
+
+        context 'when searching by seven characters' do
+          let(:search_term) { zip_code_range.to_s.first(7) }
+          it { expect(response).to have_http_status :ok }
+          it { is_expected.to eq(expected_payload) }
+        end
+
+      end
+    end
+
   end
 
 
