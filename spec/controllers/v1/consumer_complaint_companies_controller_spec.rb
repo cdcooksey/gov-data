@@ -74,7 +74,7 @@ RSpec.describe V1::ConsumerComplaintCompaniesController, type: :controller do
 
     context 'with page param' do
       let(:page) { 1 }
-      let(:action) { get :index, params: { page: page } }
+      let(:action) { get :show, params: { id: company_id, page: page } }
       let(:expected_consumer_complaints) { consumer_complaints.drop(50).first(50) }
 
       it { expect(response).to have_http_status :ok }
