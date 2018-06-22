@@ -1,5 +1,10 @@
 class V1::ConsumerComplaintZipCodesController < V1::ApplicationController
 
+  def index
+    res = ConsumerComplaintZipCodeSerializer.new(zip_codes)
+    json_response(res.serializable_hash, :ok)
+  end
+
   def show
     res = ConsumerComplaintSerializer.new(paginated_complaints)
     json_response(res.serializable_hash, :ok)
@@ -19,6 +24,10 @@ class V1::ConsumerComplaintZipCodesController < V1::ApplicationController
       .where(consumer_complaint_zip_code_id: consumer_complaint_zip_code_params[:id])
       .offset(offset)
       .limit(PAGE_LIMIT)
+  end
+
+  def zip_codes
+    ConsumerComplaintZipCode.offset(offset).limit(PAGE_LIMIT)
   end
 
   def consumer_complaint_zip_code_params
