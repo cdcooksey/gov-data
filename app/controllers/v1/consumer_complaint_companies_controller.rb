@@ -1,7 +1,7 @@
 class V1::ConsumerComplaintCompaniesController < V1::ApplicationController
 
   def index
-    res = ConsumerComplaintCompanySerializer.new(company)
+    res = ConsumerComplaintCompanySerializer.new(companies)
     json_response(res.serializable_hash, :ok)
   end
 
@@ -25,11 +25,17 @@ class V1::ConsumerComplaintCompaniesController < V1::ApplicationController
       .limit(PAGE_LIMIT)
   end
 
-  def company
-    ConsumerComplaintCompany.offset(offset).limit(PAGE_LIMIT)
+  def companies
+    if consumer_complaint_company_params[:company]
+      ConsumerComplaintCompany.where('name LIKE ?', "#{consumer_complaint_company_params[:company]}%")
+        .offset(offset)
+        .limit(PAGE_LIMIT)
+    else
+      ConsumerComplaintCompany.offset(offset).limit(PAGE_LIMIT)
+    end
   end
 
   def consumer_complaint_company_params
-    params.permit(:id)
+    params.permit(:id, :company)
   end
 end

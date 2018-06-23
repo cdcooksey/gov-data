@@ -43,6 +43,69 @@ RSpec.describe V1::ConsumerComplaintCompaniesController, type: :controller do
       it { is_expected.to eq(expected_payload) }
     end
  
+
+    describe 'searching by company name' do
+      let(:search_term) { 0 }
+      let(:action) { get :index, params: { company: search_term } }
+
+      describe 'not getting results' do
+        let(:expected_companies) { [] }
+        let(:expected_payload) { { data: [] }.as_json }
+
+        it { expect(response).to have_http_status :ok }
+        it { is_expected.to eq(expected_payload) }
+      end
+
+      describe 'getting results' do
+        let(:company_name) { Faker::Lorem.characters(7) }
+        let(:companies) { FactoryBot.create_list(:consumer_complaint_company, 4, name: company_name) }
+        let(:expected_companies) { companies }
+
+        context 'when searching by one character' do
+          let(:search_term) { company_name.first(1) }
+          it { expect(response).to have_http_status :ok }
+          it { is_expected.to eq(expected_payload) }
+        end
+
+        context 'when searching by two characters' do
+          let(:search_term) { company_name.first(1) }
+          it { expect(response).to have_http_status :ok }
+          it { is_expected.to eq(expected_payload) }
+        end
+
+        context 'when searching by three characters' do
+          let(:search_term) { company_name.first(3) }
+          it { expect(response).to have_http_status :ok }
+          it { is_expected.to eq(expected_payload) }
+        end
+
+        context 'when searching by four characters' do
+          let(:search_term) { company_name.first(4) }
+          it { expect(response).to have_http_status :ok }
+          it { is_expected.to eq(expected_payload) }
+        end
+
+        context 'when searching by five characters' do
+          let(:search_term) { company_name.first(5) }
+          it { expect(response).to have_http_status :ok }
+          it { is_expected.to eq(expected_payload) }
+        end
+
+        context 'when searching by six characters' do
+          let(:search_term) { company_name.first(6) }
+          it { expect(response).to have_http_status :ok }
+          it { is_expected.to eq(expected_payload) }
+        end
+
+        context 'when searching by seven characters' do
+          let(:search_term) { company_name.first(7) }
+          it { expect(response).to have_http_status :ok }
+          it { is_expected.to eq(expected_payload) }
+        end
+
+      end
+    end
+
   end
 
 
