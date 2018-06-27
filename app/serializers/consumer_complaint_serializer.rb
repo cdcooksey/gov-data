@@ -6,7 +6,9 @@ class ConsumerComplaintSerializer
              :date_sent_to_company,
              :timely_response,
              :consumer_disputed,
-             :submitted_via
+             :submitted_via,
+             :consumer_complaint_narrative,
+             :company_public_response
 
   attribute :company do |obj|
     obj.consumer_complaint_company.name

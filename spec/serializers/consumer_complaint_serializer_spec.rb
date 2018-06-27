@@ -21,6 +21,8 @@ RSpec.describe ConsumerComplaintSerializer do
           timely_response: model.timely_response,
           consumer_disputed: model.consumer_disputed,
           submitted_via: model.submitted_via,
+          consumer_complaint_narrative: model.consumer_complaint_narrative,
+          company_public_response: model.company_public_response,
           company: model.consumer_complaint_company.name,
           product: model.consumer_complaint_product.name,
           subproduct: model.consumer_complaint_subproduct.name,

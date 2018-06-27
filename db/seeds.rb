@@ -17,6 +17,8 @@ CSV.foreach("#{Rails.root}/lib/seeds/consumer_complaints.csv", :headers => true)
   cc.date_received = row['Date received']
   cc.date_sent_to_company = row['Date sent to company']
   cc.submitted_via = row['Submitted via']
+  cc.consumer_complaint_narrative = row['Consumer complaint narrative']
+  cc.company_public_response = row['Company public response']
 
   cc.consumer_complaint_company = ConsumerComplaintCompany.find_or_create_by(name: row['Company'])
   cc.consumer_complaint_product = ConsumerComplaintProduct.find_or_create_by(name: row['Product'])
