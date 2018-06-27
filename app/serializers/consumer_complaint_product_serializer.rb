@@ -1,3 +1,4 @@
-class ConsumerComplaintProductSerializer < ActiveModel::Serializer
+class ConsumerComplaintProductSerializer
+  include FastJsonapi::ObjectSerializer
   attributes :id, :name
 end

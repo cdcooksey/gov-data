@@ -1,5 +1,5 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :consumer_complaint_product do
-    name "MyString"
+    name { Faker::Lorem.word }
   end
 end
